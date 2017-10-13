@@ -1,1 +1,1 @@
-# azure-functions-template
+# azure-functions-sample

@@ -1,0 +1,26 @@
+{
+    "swagger": {
+        "enabled": true
+    },
+    "tracing": {
+        "consoleLevel": "info"
+    },
+    "config": {
+        "winston": {
+            "console-options": {
+                "colorize": true,
+                "level": "info",
+                "prettyPrint": true,
+                "silent": false,
+                "timestamp": false
+            },
+            "levels": {
+                "verbose": 4,
+                "debug": 3,
+                "info": 2,
+                "warn": 1,
+                "error": 0
+            }
+        }
+    }
+}

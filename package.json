@@ -1,0 +1,68 @@
+{
+  "name": "@upcompass/azure-functions-template",
+  "private": true,
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "repository": "https://github.com/upcompass/azure-functions-template",
+  "author": "nelak@e107.com.ar",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn prepare && cd dist && func host start",
+    "precommit": "lint-staged",
+    "prepare": "taskr",
+    "debug": "taskr debug && cd dist && func host start",
+    "new": "cd src && func new -l javascript",
+    "az:publish": "yarn prepare && cd dist && func azure functionapp publish",
+    "az:logs": "cd dist && func azure functionapp logstream"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --no-semi --single-quote --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@types/node": "^8.0.9",
+    "nconf": "^0.8.5",
+    "winston": "^2.4.0",
+    "winston-azure-functions": "^0.0.2"
+  },
+  "devDependencies": {
+    "@taskr/clear": "^1.0.6",
+    "@taskr/esnext": "^1.0.0",
+    "@taskr/shell": "^1.0.6",
+    "@taskr/typescript": "^1.1.0",
+    "azure-functions-pack": "^0.3.1",
+    "husky": "^0.14.3",
+    "jest": "^20.0.4",
+    "lint-staged": "^4.0.1",
+    "prettier": "^1.5.2",
+    "taskr": "^1.0.6",
+    "tslint": "^5.7.0",
+    "tslint-config-prettier": "^1.5.0",
+    "typescript": "^2.5.2"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(tsx?|jsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json",
+      "jsx"
+    ]
+  },
+  "config": {
+    "winston": {
+      "console-options": {
+        "colorize": true,
+        "level": "info",
+        "prettyPrint": true,
+        "silent": false
+      }
+    }
+  }
+}
